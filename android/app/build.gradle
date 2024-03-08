@@ -74,9 +74,9 @@ android {
     buildToolsVersion rootProject.ext.buildToolsVersion
     compileSdk rootProject.ext.compileSdkVersion
 
-    namespace "com.reactnativeproject"
+    namespace "com.NOTAKOSApp"
     defaultConfig {
-        applicationId "com.reactnativeproject"
+        applicationId "com.NOTAKOSApp"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
