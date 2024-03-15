@@ -1,3 +1,5 @@
+/* eslint-disable react-native/no-inline-styles */
+
 import React from 'react';
 import {
   SafeAreaView,
@@ -9,10 +11,12 @@ import {
   useColorScheme,
 } from 'react-native';
 import {Colors} from 'react-native/Libraries/NewAppScreen';
+import {BottomNavbar} from '../components/BottomNavbar';
 import {Card} from '../components/Card';
-// import {Card} from '../components/Card';
+import ListIncome from '../components/ListIncome';
+import ListOutcome from '../components/ListOutcome';
 
-const Home = () => {
+const Home = ({navigation}: any) => {
   const isDarkMode = useColorScheme() === 'dark';
 
   const backgroundStyle = {
@@ -20,93 +24,50 @@ const Home = () => {
   };
 
   return (
-    <SafeAreaView style={backgroundStyle}>
+    <SafeAreaView style={[backgroundStyle, {flex: 1}]}>
       <StatusBar
         barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-        backgroundColor={backgroundStyle.backgroundColor}
+        backgroundColor={
+          isDarkMode ? backgroundStyle.backgroundColor : '#813358'
+        }
       />
-      <ScrollView>
-        <View style={styles.container}>
-          <Card title="NOTAKOS" />
-        </View>
-        <View>
-          <View style={styles.card}>
-            <Text style={{flex: 1, textAlign: 'center'}}>Icon</Text>
-            <Text style={{flex: 2, marginLeft: 10}}>Pemasukan</Text>
-            <Text style={{flex: 1, textAlign: 'center'}}>Rp 500.000,-</Text>
-          </View>
-          <View style={styles.card}>
-            <Text style={{flex: 1, textAlign: 'center'}}>Icon</Text>
-            <Text style={{flex: 2, marginLeft: 10}}>Pemasukan</Text>
-            <Text style={{flex: 1, textAlign: 'center'}}>Rp 500.000,-</Text>
-          </View>
-          <View style={styles.card}>
-            <Text style={{flex: 1, textAlign: 'center'}}>Icon</Text>
-            <Text style={{flex: 2, marginLeft: 10}}>Pemasukan</Text>
-            <Text style={{flex: 1, textAlign: 'center'}}>Rp 500.000,-</Text>
-          </View>
-          <View style={styles.card}>
-            <Text style={{flex: 1, textAlign: 'center'}}>Icon</Text>
-            <Text style={{flex: 2, marginLeft: 10}}>Pemasukan</Text>
-            <Text style={{flex: 1, textAlign: 'center'}}>Rp 500.000,-</Text>
-          </View>
-          <View style={styles.card}>
-            <Text style={{flex: 1, textAlign: 'center'}}>Icon</Text>
-            <Text style={{flex: 2, marginLeft: 10}}>Pemasukan</Text>
-            <Text style={{flex: 1, textAlign: 'center'}}>Rp 500.000,-</Text>
-          </View>
-          <View style={styles.card}>
-            <Text style={{flex: 1, textAlign: 'center'}}>Icon</Text>
-            <Text style={{flex: 2, marginLeft: 10}}>Pemasukan</Text>
-            <Text style={{flex: 1, textAlign: 'center'}}>Rp 500.000,-</Text>
-          </View>
-          <View style={styles.card}>
-            <Text style={{flex: 1, textAlign: 'center'}}>Icon</Text>
-            <Text style={{flex: 2, marginLeft: 10}}>Pemasukan</Text>
-            <Text style={{flex: 1, textAlign: 'center'}}>Rp 500.000,-</Text>
-          </View>
-          <View style={styles.card}>
-            <Text style={{flex: 1, textAlign: 'center'}}>Icon</Text>
-            <Text style={{flex: 2, marginLeft: 10}}>Pemasukan</Text>
-            <Text style={{flex: 1, textAlign: 'center'}}>Rp 500.000,-</Text>
-          </View>
-          <View style={styles.card}>
-            <Text style={{flex: 1, textAlign: 'center'}}>Icon</Text>
-            <Text style={{flex: 2, marginLeft: 10}}>Pemasukan</Text>
-            <Text style={{flex: 1, textAlign: 'center'}}>Rp 500.000,-</Text>
-          </View>
-          <View style={styles.card}>
-            <Text style={{flex: 1, textAlign: 'center'}}>Icon</Text>
-            <Text style={{flex: 2, marginLeft: 10}}>Pemasukan</Text>
-            <Text style={{flex: 1, textAlign: 'center'}}>Rp 500.000,-</Text>
-          </View>
-          <View style={styles.card}>
-            <Text style={{flex: 1, textAlign: 'center'}}>Icon</Text>
-            <Text style={{flex: 2, marginLeft: 10}}>Pemasukan</Text>
-            <Text style={{flex: 1, textAlign: 'center'}}>Rp 500.000,-</Text>
-          </View>
+      <View
+        style={[
+          isDarkMode
+            ? [backgroundStyle.backgroundColor, styles.boxLogo]
+            : [{backgroundColor: '#813358'}, styles.boxLogo],
+        ]}>
+        <Text style={{fontSize: 18, color: 'white', padding: 30}}>NOTAKOS</Text>
+      </View>
+      <ScrollView style={{flex: 1}}>
+        <ListIncome />
+        <ListOutcome />
+        <View style={{alignItems: 'center'}}>
+          <Card>
+            <Text>TEST</Text>
+          </Card>
         </View>
       </ScrollView>
+      <View
+        style={{
+          position: 'absolute',
+          bottom: 450,
+          left: 0,
+          right: 0,
+        }}>
+        <BottomNavbar navigation={navigation} />
+      </View>
     </SafeAreaView>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
-    backgroundColor: '#813358',
-    borderBottomEndRadius: 30,
-    borderBottomStartRadius: 30,
-  },
-  card: {
-    flex: 1,
-    flexDirection: 'row',
-    borderColor: 'white',
-    borderWidth: 1,
-    // marginTop: 200,
-    // marginBottom: 10,
-    paddingTop: 20,
-    paddingBottom: 20,
-    // paddingLeft: 20,
+  boxLogo: {
+    shadowColor: '#353535',
+    shadowOpacity: 0.25,
+    shadowOffset: {width: 0, height: 10},
+    shadowRadius: 4,
+    elevation: 3,
   },
 });
 

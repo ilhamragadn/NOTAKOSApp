@@ -1,19 +1,23 @@
 import React from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, View} from 'react-native';
 
-type CardProps = {
-  title: string;
-};
-
-export const Card = ({title}: CardProps) => {
-  return (
-    <View style={styles.card}>
-      <Text style={styles.title}>{title}</Text>
-    </View>
-  );
+export const Card = ({children}: any) => {
+  return <View style={styles.card}>{children}</View>;
 };
 
 const styles = StyleSheet.create({
-  card: {margin: 20, padding: 20},
-  title: {fontSize: 16},
+  card: {
+    width: 350,
+    margin: 5,
+    padding: 6,
+    backgroundColor: '#fafafa',
+    borderRadius: 10,
+    shadowColor: '#d9d9d9',
+    shadowOpacity: 0.25,
+    shadowRadius: 3.5,
+    shadowOffset: {width: 0, height: 10},
+    elevation: 3,
+    // alignItems: 'center',
+    // justifyContent: 'center',
+  },
 });
